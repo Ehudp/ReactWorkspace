@@ -1,25 +1,48 @@
 
-import { Container } from "inversify";
+import { Container, interfaces } from "inversify";
 
+export const IOC_TYPES = {
+    http: "Http",
+    httpMock: "HttpMock",
+    logger: "Logger",
+    loggerMock: "LoggerMock",
+    webApi: "WebApi",
+    webApiMock: "WebApiMock"
+};
 class IOC
 {
     private static _container = new Container({ defaultScope: "Singleton" });
 
-    static register<TService>(instance: { new(...args: never[]): TService })
+    public static get container()
     {
-        this._container.bind<TService>("").to(instance);
+        return IOC._container;
     }
 
-    static Resolve<T>(): T
+    static register<TService>(instance: { new(...args: never[]): TService }, identifier: string = "")
     {
-        var instance = this._container.get<T>("");
+        this._container.bind<TService>(identifier).to(instance);
+    }
+
+    static Resolve<T>(identifier: string = ""): T
+    {
+        var instance = this._container.get<T>(identifier);
         return instance;
     }
 
-    static async ResolveAsync<T>(): Promise<T>
+    static async ResolveAsync<T>(identifier: string = ""): Promise<T>
     {
-        var instance = await this._container.getAsync<T>("");
+        var instance = await this._container.getAsync<T>(identifier);
         return instance;
+    }
+
+    static applyMiddleware(...middlewares: interfaces.Middleware[]): void
+    {
+        this._container.applyMiddleware(...middlewares);
+    }
+
+    static isBound(identifier: string): boolean
+    {
+        return this.container.isBound(identifier);
     }
 
 }
