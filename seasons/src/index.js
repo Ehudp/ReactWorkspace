@@ -12,8 +12,8 @@ import SeasonDisplay from './SeasonDisplay';
 // };
 
 // class App extends React.Component {
-//   constructor() {
-//     super();
+//   constructor(props) {
+//     super(props);
 //     this.state = {
 //       index: 0
 //     };
@@ -30,12 +30,26 @@ import SeasonDisplay from './SeasonDisplay';
 // }
 
 class App extends React.Component {
-  render() {
+  constructor(props) {
+    super(props);
+    this.state = {
+      lat: null
+    };
+  }
+
+  componentDidMount() {
     window.navigator.geolocation.getCurrentPosition(
-      position => console.log(position),
+      position => {
+        console.log(position);
+        const lat = position.coords.latitude;
+        this.setState({ lat: lat });
+      },
       err => console.log(err)
     );
-    return <div>Latitude :</div>;
+  }
+
+  render() {
+    return <div>Latitude : {this.state.lat}</div>;
   }
 }
 

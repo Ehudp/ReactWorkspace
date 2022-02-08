@@ -1,0 +1,53 @@
+.content {
+  background-color: yellow;
+}
+
+.extraContent {
+  //background-color: orange;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20;
+  min-width: 100;
+  height: 100px;
+
+  .item1 {
+    height: 50%;
+    width: 50%;
+    color: white;
+    font-size: 20px;
+    flex: auto;
+    background-color: blue;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+  }
+
+  .item2 {
+    height: 50%;
+    width: 50%;
+    color: white;
+    font-size: 20px;
+    flex: auto;
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .sp1 {
+      color: yellow;
+    }
+
+    .sp1 .sp2 {
+      color: green;
+    }
+
+    //this will win in the parent
+    span.sp1 .sp2 {
+      color: blue;
+    }
+  }
+  //this will win
+  //   .item2 .sp1 .sp2 {
+  //     color: gray;
+  //   }
+}
