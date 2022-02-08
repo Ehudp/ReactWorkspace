@@ -21,7 +21,6 @@ class IOCInternal
             console.log("Bound");
             return;
         }
-
         this._container.bind<TService>(identifier).to(instance);
     }
 

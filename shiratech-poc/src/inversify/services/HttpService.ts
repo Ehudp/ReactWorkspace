@@ -1,12 +1,12 @@
 //import "reflect-metadata";
 import { injectable } from "inversify";
-import IHttpService from "../interfaces/IHttpService"
+import IHttpService from "../../interfaces/IHttpService"
 
 
 @injectable()
-export default class MockHttpService implements IHttpService
+export default class HttpService implements IHttpService
 {
-    private _name: string = "MockHttpService";
+    private _name: string = "HttpService";
 
     public get = () =>
     {

@@ -2,14 +2,14 @@ import { Container, interfaces } from 'inversify';
 import IHttpService from '../interfaces/IHttpService';
 import ILoggerService from '../interfaces/ILoggerService';
 import IWebApiService from '../interfaces/IWebApiService';
-import IOC, { IOC_TYPES } from '../ioc/IOC';
+import IOC, { IOC_TYPES } from './IOC';
 import IOCS from './IOCS';
-import HttpService from '../services/HttpService';
-import LoggerService from '../services/LoggerService';
-import MockHttpService from '../services/MockHttpService';
-import MockLoggerService from '../services/MockLoggerService';
-import MockWebApiService from '../services/MockWebApiService';
-import WebApiService from '../services/WebApiService';
+import HttpService from './services/HttpService';
+import LoggerService from './services/LoggerService';
+import MockHttpService from './services/MockHttpService';
+import MockLoggerService from './services/MockLoggerService';
+import MockWebApiService from './services/MockWebApiService';
+import WebApiService from './services/WebApiService';
 
 
 /* message:'Ambiguous match found for serviceIdentifier: 

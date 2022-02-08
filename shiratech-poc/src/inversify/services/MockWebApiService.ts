@@ -1,9 +1,9 @@
 //import 'reflect-metadata';
 import { inject, injectable } from "inversify";
-import IWebApiService from "../interfaces/IWebApiService"
-import IHttpService from "../interfaces/IHttpService"
-import { IOC_TYPES } from "../ioc/IOC";
-import ILoggerService from "../interfaces/ILoggerService";
+import IWebApiService from "../../interfaces/IWebApiService"
+import IHttpService from "../../interfaces/IHttpService"
+import { IOC_TYPES } from "../IOC";
+import ILoggerService from "../../interfaces/ILoggerService";
 
 @injectable()
 export default class MockWebApiService implements IWebApiService
