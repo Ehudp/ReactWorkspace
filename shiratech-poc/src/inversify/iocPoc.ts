@@ -16,6 +16,8 @@ import WebApiService from './services/WebApiService';
    if hot reload it try register again and not protect
    we can try protect this but not sure we want 
    or not working in static/singleton 
+
+   lots of warning need to investigate 
 */
 
 const container = new Container({ defaultScope: 'Singleton' });
@@ -26,11 +28,11 @@ export const tryIoc = async () =>
 
     try
     {
-        registerWebApiMockServiceSingleton();
+        //registerWebApiMockServiceSingleton();
 
 
         //applyMiddleware();
-        //registerWebApiService();
+        registerWebApiService();
         //registerWebApiMockService();
         //registerContainer();
         //registerHttpService();
@@ -53,7 +55,7 @@ const registerWebApiMockServiceSingleton = () =>
     ioc.registerSafe<ILoggerService>(MockLoggerService, IOC_TYPES.loggerMock);
     ioc.registerSafe<IWebApiService>(MockWebApiService, IOC_TYPES.webApiMock);
 
-    var webApiService = ioc.Resolve<IWebApiService>(IOC_TYPES.webApiMock);
+    const webApiService = ioc.Resolve<IWebApiService>(IOC_TYPES.webApiMock);
     console.log(ioc.isBound(IOC_TYPES.httpMock));
     webApiService.getAllAsset();
 }
@@ -64,7 +66,7 @@ const registerWebApiMockService = () =>
     IOC.register<ILoggerService>(MockLoggerService, IOC_TYPES.loggerMock);
     IOC.register<IWebApiService>(MockWebApiService);
 
-    var webApiService = IOC.Resolve<IWebApiService>();
+    const webApiService = IOC.Resolve<IWebApiService>();
     console.log(IOC.isBound(IOC_TYPES.httpMock));
     webApiService.getAllAsset();
 }
@@ -75,7 +77,10 @@ const registerWebApiService = () =>
     IOC.register<ILoggerService>(LoggerService, IOC_TYPES.logger);
     IOC.register<IWebApiService>(WebApiService);
 
-    var webApiService = IOC.Resolve<IWebApiService>();
+    const webApiService = IOC.Resolve<IWebApiService>();
+    const webApiService1 = IOC.Resolve<IWebApiService>();
+
+    console.log(`isEqual ${webApiService === webApiService1}`);
 
     webApiService.getAllAsset();
 }
@@ -95,7 +100,7 @@ const applyMiddleware = () =>
 const registerMockHttpService = () =>
 {
     IOC.register<IHttpService>(MockHttpService, IOC_TYPES.httpMock);
-    var service = IOC.Resolve<IHttpService>(IOC_TYPES.httpMock);
+    const service = IOC.Resolve<IHttpService>(IOC_TYPES.httpMock);
     service.get();
     service.getInstance();
     console.log(service);
@@ -104,7 +109,7 @@ const registerMockHttpService = () =>
 const resolveMockHttpServiceAsync = async () =>
 {
     IOC.register<IHttpService>(MockHttpService, IOC_TYPES.httpMock);
-    var service = await IOC.ResolveAsync<IHttpService>(IOC_TYPES.httpMock);
+    const service = await IOC.ResolveAsync<IHttpService>(IOC_TYPES.httpMock);
     service.get();
     service.getInstance();
     console.log(service);
@@ -113,7 +118,7 @@ const resolveMockHttpServiceAsync = async () =>
 const resolveHttpServiceAsync = async () =>
 {
     IOC.register<IHttpService>(HttpService);
-    var service = await IOC.ResolveAsync<IHttpService>();
+    const service = await IOC.ResolveAsync<IHttpService>();
     service.get();
     service.getInstance();
     console.log(service);
@@ -122,7 +127,7 @@ const resolveHttpServiceAsync = async () =>
 const registerHttpService = () =>
 {
     IOC.register<IHttpService>(HttpService);
-    var service = IOC.Resolve<IHttpService>();
+    const service = IOC.Resolve<IHttpService>();
     service.get();
     service.getInstance();
     console.log(service);
@@ -131,7 +136,7 @@ const registerHttpService = () =>
 const registerContainer = () =>
 {
     container.bind<IHttpService>('').to(HttpService);
-    var instance = container.get<IHttpService>('');
+    const instance = container.get<IHttpService>('');
     console.log(instance);
 }
 
