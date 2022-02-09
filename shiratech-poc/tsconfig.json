@@ -29,5 +29,8 @@
     "src"
   ],  "exclude": ["node_modules"],
   "presets": ["@babel/preset-react","@babel/preset-env"],
-  "plugins": ["@babel/plugin-transform-typescript", "@emotion"]
+  "plugins": [
+    "@babel-plugin-transform-typescript-metadata",
+    "@babel/plugin-transform-typescript", 
+    "@emotion"]
 }
