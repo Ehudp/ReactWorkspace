@@ -9,6 +9,7 @@
     "types": ["reflect-metadata"],
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
+    "useDefineForClassFields": true,
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -32,5 +33,7 @@
   "plugins": [
     "@babel-plugin-transform-typescript-metadata",
     "@babel/plugin-transform-typescript", 
-    "@emotion"]
+    "@emotion",
+    ["@babel/plugin-proposal-decorators", { "legacy": true }],
+    ["@babel/plugin-proposal-class-properties", { "loose": false }]]
 }
