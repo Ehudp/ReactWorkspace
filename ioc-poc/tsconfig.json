@@ -40,7 +40,7 @@
     ["@babel/plugin-proposal-decorators", { "legacy": true }],
         "babel-plugin-parameter-decorator"
   ],
-  "plugins": [
+  "plugins": ["@babel/plugin-proposal-decorators",
     "babel-plugin-transform-typescript-metadata",
     "@babel/plugin-transform-typescript", "@emotion"
  ]
