@@ -1,11 +1,13 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es6",
     "lib": [
       "dom",
       "dom.iterable",
-      "esnext"
+      "esnext",
+      "es6"
     ],
+    "sourceMap": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "allowJs": true,
@@ -20,9 +22,19 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "plugins": [{
+      "name": "typescript-plugin-css-modules"
+    }]
   },
   "include": [
     "src"
-  ]
+  ],"exclude": [
+    "node_modules"
+  ],
+  "presets": ["@babel/preset-react", "@babel/preset-env"],
+  "plugins": [
+    "babel-plugin-transform-typescript-metadata",
+    "@babel/plugin-transform-typescript", "@emotion"
+ ]
 }

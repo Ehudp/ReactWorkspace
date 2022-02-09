@@ -29,10 +29,10 @@ export const tryIoc = () =>
         //applyMiddleware();
         //registerWebApiService();
         //registerWebApiMockService();
-
+        registerHttpService();
         //registerHttpService();
         //registerMockHttpService();
-        registerWebApiService();
+        //registerWebApiService();
         //registerWebApiMockService();
         //printContainer();
 
