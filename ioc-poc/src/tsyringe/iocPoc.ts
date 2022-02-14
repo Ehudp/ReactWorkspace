@@ -27,9 +27,9 @@ export const tryIoc = () =>
     {
 
         //applyMiddleware();
-        //registerWebApiService();
+        registerWebApiService();
         //registerWebApiMockService();
-        registerHttpService();
+        //registerHttpService();
         //registerHttpService();
         //registerMockHttpService();
         //registerWebApiService();
@@ -62,7 +62,8 @@ const registerWebApiService = () =>
         IOC.register<IWebApiService>(WebApiService, IOC_TYPES.webApi);
         printContainer();
         var webApiService = IOC.Resolve<IWebApiService>(IOC_TYPES.webApi);
-
+        var webApiService1 = IOC.Resolve<IWebApiService>(IOC_TYPES.webApi);
+        console.log(webApiService === webApiService1)
         webApiService.getAllAsset();
     }
     catch (error)

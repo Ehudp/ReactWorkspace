@@ -25,6 +25,10 @@ class IOC
 
     static register<TService>(instance: any, identifier: string = "")
     {
+        if (this._container.isRegistered(identifier))
+        {
+            return;
+        }
         this._container.register<TService>(identifier, { useClass: instance }, { lifecycle: Lifecycle.Singleton });
     }
 

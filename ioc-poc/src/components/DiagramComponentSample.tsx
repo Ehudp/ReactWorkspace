@@ -186,7 +186,7 @@ let snapSettings: SnapSettingsModel = {
   verticalGridlines: gridlines,
 };
 
-export default () => {
+const Diagram = () => {
   return (
     <>
       <DiagramComponent
@@ -204,3 +204,5 @@ export default () => {
     </>
   );
 };
+
+export default Diagram;
